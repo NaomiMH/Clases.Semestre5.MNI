@@ -20,6 +20,8 @@ variable = input('texto ', 's')
 % texto lo que aparecera en la pantalla pidiendo introducir la variable
 % 's' hace que se guarde lo introducido tal cual
 % sin lo anterior obliga al usuario a introducir numeros
+% acepta en lugar de numeros, funciones para hacer numeros
+% ej. magic(numero) crea una matriz con numeros consecutivos en un orden diagonal
 
 % Borrar variables
 clear
@@ -97,3 +99,109 @@ variable = [v 4]
 % Secuencia de numeros
 variable = inicio:cambio:final
 % de no agregarse cambio, por default sera una secuencia en aumento de 1
+
+% Modificar un numero especifico en una matriz
+variable(renglon,columna) = valor
+% cambia el valor original por el valor dado en el renglon y columna especifica
+variable(numero) = valor
+% busca el valor en la ubicacion numero buscando primero por los renglones de la primera columna
+% si el numero es mayor a la cantidad de renglones, se pasa a la segunda columna
+% no acepta numeros mas grandes que la cantidad de elementos
+
+% Ecuaciones para matrices
+variable = variable 1 + variable 2
+variable = variable 1 . * numero
+% el punto especifica que es una operacion para cada elemento
+variable(numero,:) = valor
+% actua sobre todas las columnas del renglon numero
+
+% Funciones de numeros random
+variable = rand(renglones,columnas)
+variable = randi(maximo,renglones,columnas)
+% numeros random de 1 a maximo, incluyendo al maximo y al 1
+variable = randn(renglones,columnas)
+% con distribucion normal
+randperm(maximo,muestras)
+% permutaciones de 1 a maximo, muestras es opcional
+
+% Sort
+sort(variable,modo)
+% en caso de no especificar modo, se ordena de modo ascendente
+% en caso de que variable sea una matriz, se ordenan por columnas
+% en caso de querer ordenar por renglones, se puede poner modo = 2
+% tambien se puede
+% modo = 'ascend'
+% modo = 'descend'
+% tambien puede ordenar strings
+
+% Desviacion estandard
+variable = std(variable 1,0,modo)
+% por default, con solo variable 1, regresa la desviacion por columna
+% agregando 0 y modo = 2, regresa la desviacion por renglon
+% Nanfalg:
+variable = std(variable 1,'omitnan')
+% omite los valores NaN
+% se puede hacer lo opuesto con 'includenan'
+
+% Media
+variable = mean(variable 1,modo)
+% por default, sin el modo, regresa la mediana por columna
+% modo = 2, regresa la mediana por renglon
+% tambien aplica las Nanfalg
+
+% Mediana
+variable = median(variable 1,modo)
+% igual que las anteriores
+
+% Variables de funciones
+% archivos .m
+varargin{numero}
+% valor de las variables que son recibidas
+nargin
+% cantidad de variables recibidas
+varargout{numero}
+% valor de las variables que seran regresadas
+nargout
+% cantidad de variables a regresar
+% ej.
+[variable1,variable2] = funcion(variable3)
+% en este caso
+% varargin{0} = variable3
+% nargin = 1
+% variable1 = varargout{0}
+% variable2 = varargout{1}
+% nargout = 2
+
+% Graficas
+
+% primero hay que activar figuras para graficar
+figure(nombre,valor)
+% se puede llamar directo o especificar nombre y valor para personalizar
+% nombre = 'Color', valor = 'white' establece el fondo en blanco
+% nombre = 'Name', valor = 'titulo' establece el titulo de la pantalla
+% nombre = 'NumberTitle', valor = 'off' quita el numero de la pantalla que aparece antes del nombre
+% si se llama otra figura, abrira otra ventana
+% se puede especificar guardar en una variable para poder modificar sus propiedades
+
+% se puede divir en diferentes cuadrantes la pantalla para trabajar con mas de una tabla
+subplot(renglones,columnas,activo)
+% se especifica un activo para especificar donde se trabaja primero
+% para cambiar de activo, solo se tiene que volver a especificar la divicion con un numero diferente de activo
+% se puede especificar un rango de activos (ej. 2:3) mientras esten consecutivos
+
+% elegir entre las siguientes graficas
+% histogramas
+variable = histogram(variable1,extra)
+% si extra = numero, el numero definira la cantidad de columnas en el histograma
+% si extra = rango de numeros, se divide de acuerdo a los numeros dados las columnas
+% ej. [-10 -2:0.5:2 10]
+% la primera columna es de -10 a -2, la siguientes son las creadas a partir de -2 a 2 cada 0.5 y la ultima es de 2 a 10
+% no es necesario poner variable, de hacerlo permite ver las propiedades
+% variable, a continuacion, se considera la variable que guarda el histograma
+variable2 = variable.propiedad
+% permite guardar directamente el valor de alguna de las propiedades
+variable2 = morebins(variable)a
+% regresa el nuevo numero de columnas, mayor al anterior
+% se puede hacer lo mismo con lessbins
+variable.propiedad = valor
+% para editar directamente la propiedad
