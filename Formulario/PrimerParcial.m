@@ -193,6 +193,9 @@ subplot(renglones,columnas,activo)
 % histogramas
 variable = histogram(variable1,extra)
 % si extra = numero, el numero definira la cantidad de columnas en el histograma
+% si extra = 'BarWidth',numero define el grueso de las columnas a numero
+% si extra = 'Normalization','probability' las columnas indicaran la probabilidad de cada valor
+% si extra = 'Face
 % si extra = rango de numeros, se divide de acuerdo a los numeros dados las columnas
 % ej. [-10 -2:0.5:2 10]
 % la primera columna es de -10 a -2, la siguientes son las creadas a partir de -2 a 2 cada 0.5 y la ultima es de 2 a 10
@@ -200,8 +203,12 @@ variable = histogram(variable1,extra)
 % variable, a continuacion, se considera la variable que guarda el histograma
 variable2 = variable.propiedad
 % permite guardar directamente el valor de alguna de las propiedades
-variable2 = morebins(variable)a
-% regresa el nuevo numero de columnas, mayor al anterior
-% se puede hacer lo mismo con lessbins
+variable2 = morebins(variable)
+% regresa el nuevo numero de columnas, mayor al anterior, con el cambio aplicado al histograma
 variable.propiedad = valor
 % para editar directamente la propiedad
+variable2 = sum(variable.Values)
+% regresa el valor de la suma de los valores en variable
+hold on
+variable2 = histogram(variable3,extra)
+% sobrepone en la misma grafica un segundo histograma
