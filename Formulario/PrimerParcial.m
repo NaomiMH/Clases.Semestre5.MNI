@@ -12,7 +12,10 @@ doc
 
 % Ecuaciones
 pi
-exp
+exp(numero)
+% numero seria el exponente de la exponencial
+mod(dividiendo,divisor)
+% regresa el residuo
 
 % Iprimir texto
 fprintf('Shalala\n%.2f\n',a)
