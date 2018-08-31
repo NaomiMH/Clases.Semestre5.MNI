@@ -7,6 +7,10 @@ help funcion
 % Documentacion
 doc
 
+% Ecuaciones
+pi
+exp
+
 % Iprimir texto
 fprintf('Shalala\n%.2f\n',a)
 % \n pasar renglon
@@ -54,6 +58,32 @@ variable = ones(renglones,columnas)
 % Crear ceros
 variable = zeros(renglones,columnas)
 
+% Maximo
+variable = max(variable2)
+% busca por columna el mayor
+variable = max(variable2,[],2)
+% busca por renglones el mayor
+
+% Minimo
+variable = min(variable2)
+% aplica igual que con maximo
+
+% Encontrar
+variable = find(numero)
+% regresa la ubicacion del numero buscado
+% el numero tiene un formato especifico
+variable = find(variable2 == numero)
+% busca en variable2 el numero exacto
+% en caso de buscar un numero decimal hacerlo de este modo
+% ej.
+% dado una variable
+variable = 0:0.1:1
+% si se busca
+variable2 = find(variable==0.3)
+% da una variable vacia, por el redondeo
+% solucion
+variable2 = find(abs(variable-0.3) < 0.001)
+
 % For
 for expression
 statements
@@ -98,7 +128,7 @@ variable = [0 1; 2 3]
 % En lugar de espacio, pueden estar separados por , tambien.
 
 % Agregar numeros a variable
-variable = [v 4]
+variable = [variable 4]
 % tener cuidado con las reglas de concatenacion
 
 % Secuencia de numeros
@@ -106,6 +136,7 @@ variable = inicio:cambio:final
 % de no agregarse cambio, por default sera una secuencia en aumento de 1
 
 % Modificar un numero especifico en una matriz
+% importante recordar que no hay posicion 0
 variable(renglon,columna) = valor
 % cambia el valor original por el valor dado en el renglon y columna especifica
 variable(numero) = valor
@@ -114,8 +145,8 @@ variable(numero) = valor
 % no acepta numeros mas grandes que la cantidad de elementos
 
 % Ecuaciones para matrices
-variable = variable 1 + variable 2
-variable = variable 1 . * numero
+variable = variable1 + variable2
+variable = variable1 . * numero
 % el punto especifica que es una operacion para cada elemento
 variable(numero,:) = valor
 % actua sobre todas las columnas del renglon numero
@@ -140,22 +171,22 @@ sort(variable,modo)
 % tambien puede ordenar strings
 
 % Desviacion estandard
-variable = std(variable 1,0,modo)
+variable = std(variable1,0,modo)
 % por default, con solo variable 1, regresa la desviacion por columna
 % agregando 0 y modo = 2, regresa la desviacion por renglon
 % Nanfalg:
-variable = std(variable 1,'omitnan')
+variable = std(variable1,'omitnan')
 % omite los valores NaN
 % se puede hacer lo opuesto con 'includenan'
 
 % Media
-variable = mean(variable 1,modo)
+variable = mean(variable1,modo)
 % por default, sin el modo, regresa la mediana por columna
 % modo = 2, regresa la mediana por renglon
 % tambien aplica las Nanfalg
 
 % Mediana
-variable = median(variable 1,modo)
+variable = median(variable1,modo)
 % igual que las anteriores
 
 % Variables de funciones
@@ -201,6 +232,7 @@ subplot(renglones,columnas,activo)
 % se especifica un activo para especificar donde se trabaja primero
 % para cambiar de activo, solo se tiene que volver a especificar la divicion con un numero diferente de activo
 % se puede especificar un rango de activos (ej. 2:3) mientras esten consecutivos
+% si se guarda en una variable, esto permite modificarla directamente sin tener que volver a cambiar de pantalla activa
 
 % elegir entre las siguientes graficas
 
@@ -234,3 +266,50 @@ variable2 = histogram(variable3,extra)
 % sobrepone en la misma grafica un segundo histograma
 
 % Plot
+% hay que tener cuidado con este grafico
+% la mejor manera de conseguir el grafico deseado es especificando los valores de x y y
+variable = plot(valor)
+% si valor = matriz, x van a ser la cantidad de renglones, y el valor de cada elemento y las columnas definiran el numero de graficas
+variable = plot(x,y,modo)
+% si modo = '--' u otros parecidos, la linea sera punteada
+% se puede declarar varias lineas al mismo tiempo
+variable = plot(x,y,modo,x2,y2,modo2,x3,y3,modo)
+% no importa que se omita el modo
+% en el mismo modo se puede personalizar la linea de diferentes maneras
+% ej. 'b--o' en este caso, especifica el color (b), tipo de linea (--) y un marcador (o).
+% otras caracteristicas que se pueden editar:
+% 'LineWidth' define el grueso de la linea
+% 'MarkerSize' define el tamano del marcador
+% 'MarkerEdgeColor' define el color del marcador
+% 'MarkerFaceColor' define el color de la linea
+% 'DurationTickFormat',(ej.)mm:ss define en el eje de las x que los numeros sean en formato mm:ss
+
+% Modificaciones extra
+% nota: estos cambios se hacen para la grafica, no para la pantalla
+xlabel(nombre)
+ylabel(nombre)
+% definen los nombres de los ejes
+title(nombre)
+% define el titulo de la grafica
+
+% Info extra
+% formar un circulo
+r = 2;
+% radio
+xc = 4;
+% desplazamiento en x
+yc = 3;
+% desplazamiento en y
+theta = linspace(0,2*pi);
+x = r*cos(theta) + xc;
+y = r*sin(theta) + yc;
+plot(x,y)
+axis equal
+
+% Serie Taylor
+% termino del error
+Rn(x)=(f^n(c)*h^n)/(n!)
+% no se use esta ecuacion directamente en matlab
+% x = punto conocido
+% n = orden de la expresion
+% h = distancia al punto conocido
