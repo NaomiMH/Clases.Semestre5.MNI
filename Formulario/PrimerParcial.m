@@ -55,8 +55,11 @@ variable = ones(renglones,columnas)
 variable = zeros(renglones,columnas)
 
 % For
-for
+for expression
+statements
+end
 % expression = inicializar:cambio:final
+% en caso de no especificar cambio, se aumenta en 1 por default
 
 % If
 if expression
@@ -66,18 +69,17 @@ statements
 else
 statements
 end
-% en caso de no especificar cambio, se aumenta en 1 por default
+% expression puede ser
+% variable > variable 2
+% variable < numero
+% variable = variable 2
+% numero y usar break para salir del loop
 
 % While
 while expression
 statements
 end
-% break se puede usar para salir del loop
-% expression puede ser
-% variable > variable 2
-% variable < numero
-% variable = variable 2
-% numero
+% igual que if
 
 % Switch
 switch variable
