@@ -1,5 +1,8 @@
-
-% Lista de commandos
+%
+% Naomi Macias Honti a01282098
+% 29-31 de agosto 2018
+% Lista de commandos de matlab
+%
 
 % Ayuda de commandos
 help funcion
