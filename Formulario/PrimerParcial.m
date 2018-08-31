@@ -54,6 +54,10 @@ variable = ones(renglones,columnas)
 % Crear ceros
 variable = zeros(renglones,columnas)
 
+% For
+for
+% expression = inicializar:cambio:final
+
 % If
 if expression
 statements
@@ -62,7 +66,6 @@ statements
 else
 statements
 end
-% expression = inicializar:cambio:final
 % en caso de no especificar cambio, se aumenta en 1 por default
 
 % While
@@ -182,6 +185,14 @@ figure(nombre,valor)
 % nombre = 'NumberTitle', valor = 'off' quita el numero de la pantalla que aparece antes del nombre
 % si se llama otra figura, abrira otra ventana
 % se puede especificar guardar en una variable para poder modificar sus propiedades
+savefig(nombre)
+% guarda la figura activa en un archivo llamado nombre
+% ej. nombre = 'histograma.fig'
+variable = openfig(nombre)
+% sigue siendo opcional guardarlo en una variable
+variable2 = findobj(variable,'type',grafica)
+% busca el tipo de grafica en la figura variable para guardarlo en variable2
+% esto permite seguir editando la grafica
 
 % se puede divir en diferentes cuadrantes la pantalla para trabajar con mas de una tabla
 subplot(renglones,columnas,activo)
@@ -190,12 +201,14 @@ subplot(renglones,columnas,activo)
 % se puede especificar un rango de activos (ej. 2:3) mientras esten consecutivos
 
 % elegir entre las siguientes graficas
+
 % histogramas
 variable = histogram(variable1,extra)
 % si extra = numero, el numero definira la cantidad de columnas en el histograma
-% si extra = 'BarWidth',numero define el grueso de las columnas a numero
+% si extra = 'BinWidth',numero define el grueso de las columnas a numero
 % si extra = 'Normalization','probability' las columnas indicaran la probabilidad de cada valor
-% si extra = 'Face
+% si extra = 'FaceColor',color cambia el color de las columnas
+% si extra = 'EdgeColor',color cambia el color de las lineas de las columnas
 % si extra = rango de numeros, se divide de acuerdo a los numeros dados las columnas
 % ej. [-10 -2:0.5:2 10]
 % la primera columna es de -10 a -2, la siguientes son las creadas a partir de -2 a 2 cada 0.5 y la ultima es de 2 a 10
@@ -209,6 +222,13 @@ variable.propiedad = valor
 % para editar directamente la propiedad
 variable2 = sum(variable.Values)
 % regresa el valor de la suma de los valores en variable
+variable2 = categorical(variable,[valores en variable],{nuevos valores})
+% pone los nuevos valores en la variable2
+% esto sirve para graficarlo con categorias, tanto si son texto como numeros u otros caracteres.
+% ej. valores en variable = 1 2, nuevos valores = 'no' 'yes'
 hold on
+% pone en espera la grafica manteniendo activo el espacio
 variable2 = histogram(variable3,extra)
 % sobrepone en la misma grafica un segundo histograma
+
+% Plot
