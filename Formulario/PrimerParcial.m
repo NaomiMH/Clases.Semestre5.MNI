@@ -316,3 +316,4 @@ Rn(x)=(f^n(c)*h^n)/(n!)
 % x = punto conocido
 % n = orden de la expresion
 % h = distancia al punto conocido
+% nota importante: usar la calculadora en radianes
