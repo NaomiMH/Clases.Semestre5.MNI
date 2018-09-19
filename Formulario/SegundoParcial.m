@@ -34,7 +34,8 @@ function [varargout] = funcion(varargin)
 end
 
 % como resultado se crea un archivo funcion.m
-% puede ser llamado en cualquier momento con variable = funcion(valores)
+% puede ser llamado en cualquier momento con:
+variable = funcion(valores)
 % se puede hacer sin variable ni valores, todo depende de como se programe la funcion.
 
 % Variables de funciones
