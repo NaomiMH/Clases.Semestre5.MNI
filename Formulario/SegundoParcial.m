@@ -4,6 +4,18 @@
 % Lista de commandos de matlab
 %
 
+% Redondeo
+round(valor,numero)
+% numero es opcional, en caso de agregarlo mientras sea un numero mas alto, se incluyen en la respuesta mas decimales.
+% Nota: lo mas preciso es 3 o 4, de agregarse mas, deja de tener sentido.
+
+% Exponente
+numero^exponente
+% no maneja vectores.
+% Para que no de error con los vectores, se puede usar los siguientes:
+power(numero,exponente)
+numero.^exponente
+
 % Handle
 % inicializar
 variable = @(incognita) formula
