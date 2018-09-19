@@ -195,25 +195,6 @@ variable = mean(variable1,modo)
 variable = median(variable1,modo)
 % igual que las anteriores
 
-% Variables de funciones
-% archivos .m
-varargin{numero}
-% valor de las variables que son recibidas
-nargin
-% cantidad de variables recibidas
-varargout{numero}
-% valor de las variables que seran regresadas
-nargout
-% cantidad de variables a regresar
-% ej.
-[variable1,variable2] = funcion(variable3)
-% en este caso
-% varargin{0} = variable3
-% nargin = 1
-% variable1 = varargout{0}
-% variable2 = varargout{1}
-% nargout = 2
-
 % Graficas
 
 % primero hay que activar figuras para graficar
