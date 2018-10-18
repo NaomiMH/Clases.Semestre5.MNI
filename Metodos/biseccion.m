@@ -4,6 +4,8 @@
 %
 
 function [varargout] = biseccion()
+fprintf("\nSe calcula Xr con:\nXr = (Xi+Xu)/2");
+fprintf("\nSe calcula Ea con:\nEa = abs((Xr-Ea)/Xr)*100");
 handle = input('Ingrese el handle: ');
 limites = input('Ingrese el vector de limites: ');
 Xi = limites(1);
@@ -21,22 +23,25 @@ while(continuar)
         if(contador>1)
             Ea = abs((Xr-Ea)/Xr)*100;
         end
-        varargout{2} = [[Xi;Xu;Ea] varargout{2}];
+        varargout{2} = [[Xi;Xr;Xu;Ea] varargout{2}];
         if(round(handle(Xr),4)== 0)
             varargout{1} = [Xr;Ea];
             contador = iteraciones;
             encontrado = true;
         elseif(handle(Xr)*handle(Xi) < 0)
+            fprintf("\nXu toma el valor de Xr");
             Xu = Xr;
         elseif(handle(Xr)*handle(Xi) > 0)
+            fprintf("\nXi toma el valor de Xr");
             Xi = Xr;
         end
         Ea = Xr;
         contador=contador+1;
     end
+    fprintf("\n");
     if(encontrado)
-        fprintf('Se encontro una raiz en %\n',Xr);
-        fprintf('Con un valor aproximado de error de %\n',Ea);
+        fprintf('Se encontro una raiz en %.4f\n',Xr);
+        fprintf('Con un valor aproximado de error de %.2f\n',Ea);
         continuar = false;
         fprintf('\n');
     else
