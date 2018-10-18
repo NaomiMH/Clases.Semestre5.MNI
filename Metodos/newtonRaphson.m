@@ -8,8 +8,11 @@ function [varargout] = newtonRaphson()
 fprintf("\nSe calcula X con:\nX = Xp-(handle(Xp)/handleD(Xp))");
 fprintf("\nSe calcula Ea con:\nEa = abs((X-Xp)/X)*100");
 fprintf("\nSe encuentra raiz cuando X=Xp");
-handle = input('\nIngrese el handle: ');
-handleD = input('Ingrese la derivada del handle: ');
+syms x;
+handle = input('\nIngrese la funcion sin handle: ');
+handleD = diff(handle);
+handle = matlabFunction(handle);
+handleD = matlabFunction(handleD);
 Xp = input('Ingrese el escalar del valor inicial: ');
 continuar = true;
 encontrado = false;
