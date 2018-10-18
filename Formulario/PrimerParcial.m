@@ -152,6 +152,7 @@ variable(numero) = valor
 
 % Ecuaciones para matrices
 variable = variable1 + variable2
+% funciona si tienen las mismas dimensiones
 variable = variable1 . * numero
 % el punto especifica que es una operacion para cada elemento
 variable(numero,:) = valor
