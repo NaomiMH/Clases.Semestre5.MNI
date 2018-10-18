@@ -5,8 +5,9 @@
 
 function [varargout] = biseccion()
 fprintf("\nSe calcula Xr con:\nXr = (Xi+Xu)/2");
-fprintf("\nSe calcula Ea con:\nEa = abs((Xr-Ea)/Xr)*100");
-handle = input('Ingrese el handle: ');
+fprintf("\nSe calcula Ea con:\nEa = abs((Xr-Xrp)/Xr)*100");
+fprintf("\nSe encuentra raiz cuando handle(Xr)=0");
+handle = input('\nIngrese el handle: ');
 limites = input('Ingrese el vector de limites: ');
 Xi = limites(1);
 Xu = limites(2);
@@ -52,7 +53,6 @@ while(continuar)
         else
             fprintf('Aun no se ha encontrado una raiz\n');
             continuar = input('Desea refinar? [true/1 o false/0] ');
-            fprintf('\n');
         end
     end
 end
