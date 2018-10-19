@@ -117,3 +117,21 @@ variable = matriz\matriz2
 % continuando se tiene que obtener D y X
 % D = L\B
 % X = U\D
+
+% Balance de masa
+% sumaEntra(Q*c) = sumaSale(Q*c)
+% Si se acomodan las ecuaciones de cada tanque, en un sistema conectado,
+% se puede utilizar gauss-seidel para resolverlo
+% las ecuanciones de todos los tanques ([A][X]=[B]) serian las funciones y las B.
+% El resultado te daria las concentraciones de los tanques.
+
+% Circuitos
+% Nota: esta explicacion no esta bien hecha, de preferencia buscar ejemplos.
+% Se le da una direccion al circuito
+% Para cada nodo se le hace una ecuacion, su i correspondiente.
+% Las mallas se crean en cada mitad del circuito
+% a partir de la resistencia del medio, se le buscan valores correspondientes para las otras dentro de las ecuaciones antes encontradas
+% se multiplica la i por la resistencia.
+% El lado de la bateria termina tambien con el valor del voltaje
+% Se juntan todas las formulas cambiando los valores como las tablas [A][X]=[B]
+% x son las i y el resultado te da la corriente de cada malla y te permite calcular el voltaje de cada nodo.
