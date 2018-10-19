@@ -40,15 +40,29 @@ g(y) = ( (68.1 x 9.8) / y ) x ( 1 - exp(-(y x 10) / 68.1) ) - 40
 % Resultado final:
 g = @(y) (68.1 x 9.8 x power(y,-1)) .x (1 - exp(-(y x 10) / 68.1)) - 40
 
+% Derivadas
+% No se aceptan handles, asi que se recibe la funcion sin @(x)
+syms x
+% Importante que se ponga antes de ingresar la funcion
+variable = input('Texto: ')
+variable2 = diff(variable)
+% La variable2 guarda la ecuacion derivada de variable
+% sin embargo esta ecuacion aun no es una funcion que pueda ser usada igual que las demas
+variable3 = matlabFunction(variable2)
+% variable3 se convierte en un handle.
+
 % Crear funcion
 function [varargout] = funcion(varargin)
 
 end
-
 % como resultado se crea un archivo funcion.m
 % puede ser llamado en cualquier momento con:
 variable = funcion(valores)
 % se puede hacer sin variable ni valores, todo depende de como se programe la funcion.
+
+% Nota:
+% Las lineas dentro de la funcion terminan con ;
+% en algunos casos se puede dejar una linea sin ; pero es mas recomendable y limpio.
 
 % Variables de funciones
 varargin{numero}
@@ -59,8 +73,8 @@ varargout{numero}
 % valor de las variables que seran regresadas
 nargout
 % cantidad de variables a regresar
-
 % ej.
+% se llama de forma
 [variable1,variable2] = funcion(variable3)
 % en este caso
 % varargin{1} = variable3
@@ -68,3 +82,38 @@ nargout
 % variable1 = varargout{1}
 % variable2 = varargout{2}
 % nargout = 2
+
+% Operaciones de matrices 2
+
+% Determinante
+% la matriz debe de ser cuadrada
+variable = det(matriz)
+
+% Transpuesta
+variable = matriz'
+% invierte el sentido de los renglones y las columnas
+
+% Invertir
+variable = matriz.^-1
+variable = inv(matriz)
+% tiene que ser cuadrada para esta funcion
+
+% Traza
+variable = trace(matriz)
+% tiene que ser cuadrado
+
+% Aumentacion = Concatenacion
+
+% Divicion
+variable = matriz^(-1)*matriz2
+variable = matriz\matriz2
+% Nota: el resultado no es exacto, al menos variable no es igual a matriz\matriz2 ni a matriz^(-1)*matriz2
+% requiere algun redondeo
+
+% Descomposicion LU
+% Se utiliza una funcion para descomponerlo automaticamente
+[variable variable2] = lu(matriz);
+% Esta funcion se usa para resolver [A][X]=[B]
+% continuando se tiene que obtener D y X
+% D = L\B
+% X = U\D
